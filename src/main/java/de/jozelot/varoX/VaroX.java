@@ -11,6 +11,7 @@ import de.jozelot.varoX.spawns.SpawnManager;
 import de.jozelot.varoX.teamchests.TeamChestManager;
 import de.jozelot.varoX.teams.TeamsManager;
 import de.jozelot.varoX.user.UserManager;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,6 +34,10 @@ public final class VaroX extends JavaPlugin {
     public void onEnable() {
         
         getLogger().info("Setting up Listener and Commands!");
+
+        // bStats impl
+        int pluginId = 31690;
+        Metrics metrics = new Metrics(this, pluginId);
 
         // Load Object classes
         config = new ConfigManager(this);
