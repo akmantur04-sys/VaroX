@@ -108,10 +108,11 @@ public final class VaroX extends JavaPlugin {
             public void run() {
                 if (statesManager.getGameState() == 0 || statesManager.getGameState() == 1) {
                     for (World world : Bukkit.getWorlds()) {
-                        world.setTime(1);
+                        if (world.getEnvironment() != World.Environment.NORMAL) continue;
+                            world.setTime(1);
                     }
                 } else {
-                    this.cancel();
+                this.cancel();
                 }
             }
         }.runTaskTimer(this, 0L, 20L);
